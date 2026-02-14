@@ -1,7 +1,6 @@
-import { describe, it, expect, vi } from 'vitest';
-import { flushPromises, mount } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
+import { mount } from '@vue/test-utils';
 import HomeContent from '@/components/home/HomeContent.vue';
-import { nextTick } from 'vue';
 
 describe('HomeContent', () => {
   it('renders the html-editor', () => {

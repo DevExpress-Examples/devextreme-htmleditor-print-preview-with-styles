@@ -3,6 +3,6 @@ import HomeContent from '@/components/home/HomeContent.vue';
 </script>
 
 <template>
-  <HomeContent />
+  <HomeContent/>
 </template>
 
