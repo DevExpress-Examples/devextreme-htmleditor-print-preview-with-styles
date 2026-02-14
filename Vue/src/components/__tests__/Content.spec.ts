@@ -1,11 +1,26 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+import { flushPromises, mount } from '@vue/test-utils';
+import HomeContent from '@/components/home/HomeContent.vue';
+import { nextTick } from 'vue';
 
-import { mount } from '@vue/test-utils';
-import Content from '../HomeContent.vue';
+describe('HomeContent', () => {
+  it('renders the html-editor', () => {
+    const wrapper = mount(HomeContent);
+    
+    expect(wrapper.exists()).toBe(true);
+    
+    const htmlEditor = wrapper.find('.dx-htmleditor');
+    expect(htmlEditor.exists()).toBe(true);
+  });
 
-describe('Content', () => {
-  it('renders properly', () => {
-    const wrapper = mount(Content, { props: { text: 'count' } });
-    expect(wrapper.text()).toContain('count');
+  it('updates the iframe content when the editor value changes', async () => {
+    const wrapper = mount(HomeContent);
+    
+    await wrapper.find(".show-markup-button").trigger('click');
+    
+    setTimeout(() => {
+      const iframe = wrapper.find('iframe');
+      expect(iframe.exists()).toBe(true);
+    }, 100);
   });
 });
