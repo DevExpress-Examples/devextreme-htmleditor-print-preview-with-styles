@@ -6,3 +6,7 @@
   margin: 50px 50px;
   width: 90vh;
 }
+
+.popup-content {
+  height: 100%;
+}
