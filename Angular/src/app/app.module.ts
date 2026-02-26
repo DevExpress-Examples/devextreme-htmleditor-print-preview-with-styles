@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DxButtonModule } from 'devextreme-angular/ui/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DxHtmlEditorModule, DxPopupModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     DxButtonModule,
+      DxHtmlEditorModule, DxPopupModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
