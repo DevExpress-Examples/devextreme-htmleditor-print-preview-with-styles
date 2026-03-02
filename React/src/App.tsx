@@ -1,18 +1,99 @@
-import { useCallback, useState } from 'react';
-import './App.css';
-import 'devextreme/dist/css/dx.material.blue.light.compact.css';
-import Button from 'devextreme-react/button';
+import { useState, useCallback, useRef } from "react";
+import HtmlEditor, {
+  Toolbar,
+  Item,
+  type HtmlEditorRef,
+} from "devextreme-react/html-editor";
+import { Popup } from "devextreme-react/popup";
+import { Button } from "devextreme-react/button";
 
-function App(): JSX.Element {
-  var [count, setCount] = useState<number>(0);
-  const clickHandler = useCallback(() => {
-    setCount((prev) => prev + 1);
-  }, [setCount]);
+import PreviewIframe from "./htmleditor-preview/PreviewIframe";
+import { markup as initialMarkup } from "./data";
+
+import "devextreme/dist/css/dx.material.blue.light.compact.css";
+import "./index.css";
+
+const headerValues: Array<number | boolean> = [false, 1, 2, 3, 4, 5];
+
+export default function App() {
+  const editorRef = useRef<HtmlEditorRef>(null);
+  const [editorValue, setEditorValue] = useState<string>(initialMarkup);
+  const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
+
+  const handlePopupOpen = useCallback(() => {
+    setIsPopupVisible(true);
+  }, []);
+
+  const handlePopupClose = useCallback(() => setIsPopupVisible(false), []);
+
   return (
-    <div className="main">
-      <Button text={`Click count: ${count}`} onClick={clickHandler} />
+    <div className="demo-container">
+      <HtmlEditor
+        ref={editorRef}
+        value={editorValue}
+        onValueChange={setEditorValue}
+        height="725px"
+      >
+        <Toolbar>
+          <Item name="undo" />
+          <Item name="redo" />
+          <Item name="separator" />
+          <Item
+            name="header"
+            acceptedValues={headerValues}
+          />
+          <Item name="separator" />
+          <Item name="bold" />
+          <Item name="italic" />
+          <Item name="strike" />
+          <Item name="underline" />
+          <Item name="separator" />
+          <Item name="alignLeft" />
+          <Item name="alignCenter" />
+          <Item name="alignRight" />
+          <Item name="alignJustify" />
+          <Item name="separator" />
+          <Item name="insertTable" />
+          <Item name="insertHeaderRow" />
+          <Item name="insertRowAbove" />
+          <Item name="insertRowBelow" />
+          <Item name="separator" />
+          <Item name="insertColumnLeft" />
+          <Item name="insertColumnRight" />
+          <Item name="separator" />
+          <Item name="deleteColumn" />
+          <Item name="deleteRow" />
+          <Item name="deleteTable" />
+          <Item name="separator" />
+          <Item name="cellProperties" />
+          <Item name="tableProperties" />
+          <Item>
+            <Button
+              text="Show markup"
+              stylingMode="text"
+              onClick={handlePopupOpen}
+            />
+          </Item>
+        </Toolbar>
+      </HtmlEditor>
+
+      <Popup
+        visible={isPopupVisible}
+        onHiding={handlePopupClose}
+        title="Markup"
+        showTitle={true}
+        showCloseButton={true}
+        width={800}
+        height={500}
+      >
+          <PreviewIframe
+            rawHtml={
+              editorRef.current?.instance().getQuillInstance().root.innerHTML ||
+              ""
+            }
+            editorRef={editorRef}
+          />
+      </Popup>
     </div>
   );
 }
-
-export default App;
