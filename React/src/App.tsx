@@ -84,8 +84,8 @@ export default function App() {
         showTitle
         showCloseButton
         hideOnOutsideClick
-        width={800}
-        height={500}
+        width="80%"
+        height="80%"
       >
           <PreviewIframe
             rawHtml={
