@@ -81,8 +81,9 @@ export default function App() {
         visible={isPopupVisible}
         onHiding={handlePopupClose}
         title="Markup"
-        showTitle={true}
-        showCloseButton={true}
+        showTitle
+        showCloseButton
+        hideOnOutsideClick
         width={800}
         height={500}
       >
