@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import DxHtmlEditor, {
   DxToolbar,
   DxItem
@@ -13,25 +13,27 @@ import 'devextreme/dist/css/dx.material.blue.light.compact.css';
 const popupVisible = ref(false);
 const editorValue = ref(markup);
 const editorRef = ref();
+const fullDocument = ref(getFullDocument(markup));
+
+const getEditorInnerHtml = () => editorRef.value?.instance?.getQuillInstance?.()?.root?.innerHTML
+  ?? editorValue.value;
 
 const showMarkupButtonOptions = {
   text: 'Show markup',
   stylingMode: 'text',
   elementAttr: { class: 'show-markup-button' },
-  onClick: () => popupVisible.value = true
+  onClick: () => {
+    fullDocument.value = getFullDocument(getEditorInnerHtml());
+    popupVisible.value = true;
+  }
 };
-
-const fullDocument = computed(() => {
-  const content = editorRef.value.instance.getQuillInstance().root.innerHTML;
-  return getFullDocument(content);
-});
 </script>
 
 <template>
   <div class="demo-container">
     <DxHtmlEditor
       ref="editorRef"
-      v-model:value="editorValue"
+      :value="editorValue"
     >
       <DxToolbar>
         <DxItem name="undo"/>
@@ -70,6 +72,7 @@ const fullDocument = computed(() => {
       title="Markup"
       :show-title="true"
       :show-close-button="true"
+      :hide-on-outside-click="true"
     >
       <div
         class="popup-content"
