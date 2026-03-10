@@ -37,7 +37,10 @@ $(() => {
   popupInstance = $('#popup').dxPopup({
     showTitle: true,
     title: 'Markup',
+    width: "80%",
+    height: "80%",
     showCloseButton: true,
+    hideOnOutsideClick: true,
     onShown: onPopupShown
   }).dxPopup('instance');
 
