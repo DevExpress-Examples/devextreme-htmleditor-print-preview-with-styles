@@ -32,7 +32,6 @@ export default function App() {
         ref={editorRef}
         value={editorValue}
         onValueChange={setEditorValue}
-        height="725px"
       >
         <Toolbar>
           <Item name="undo" />
