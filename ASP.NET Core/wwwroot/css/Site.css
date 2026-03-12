@@ -5,3 +5,7 @@
 body {
     margin: 8px;
 }
+
+.value-content {
+    height: 100%;
+}
