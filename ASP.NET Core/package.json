@@ -3,10 +3,11 @@
   "name": "asp.net",
   "private": true,
   "dependencies": {
-    "jquery": "3.7.1",
-    "devextreme-dist": "^25.2.3",
+    "bootstrap": "^5.3.7",
     "devextreme-aspnet-data": "^5.1.0",
-    "bootstrap": "^5.3.7"
+    "devextreme-dist": "^25.2.3",
+    "devextreme-quill": "^1.7.9",
+    "jquery": "3.7.1"
   },
   "devDependencies": {
     "gulp": "4.0.2",
