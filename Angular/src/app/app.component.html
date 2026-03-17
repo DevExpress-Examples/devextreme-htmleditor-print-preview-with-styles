@@ -1,3 +1,48 @@
-<div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+<div class="dx-viewport">
+  <div class="container" style="padding: 20px">
+    <dx-html-editor [value]="markup">
+      <dxo-html-editor-toolbar>
+        <dxi-html-editor-item name="undo"></dxi-html-editor-item>
+        <dxi-html-editor-item name="redo"></dxi-html-editor-item>
+        <dxi-html-editor-item name="separator"></dxi-html-editor-item>
+
+        <dxi-html-editor-item
+          name="header"
+          [acceptedValues]="[false, 1, 2, 3, 4, 5]"
+        ></dxi-html-editor-item>
+        <dxi-html-editor-item name="separator"></dxi-html-editor-item>
+
+        <dxi-html-editor-item name="bold"></dxi-html-editor-item>
+        <dxi-html-editor-item name="italic"></dxi-html-editor-item>
+        <dxi-html-editor-item name="strike"></dxi-html-editor-item>
+        <dxi-html-editor-item name="underline"></dxi-html-editor-item>
+        <dxi-html-editor-item name="separator"></dxi-html-editor-item>
+
+        <dxi-html-editor-item name="alignLeft"></dxi-html-editor-item>
+        <dxi-html-editor-item name="alignCenter"></dxi-html-editor-item>
+        <dxi-html-editor-item name="alignRight"></dxi-html-editor-item>
+        <dxi-html-editor-item name="alignJustify"></dxi-html-editor-item>
+        <dxi-html-editor-item name="separator"></dxi-html-editor-item>
+
+        <dxi-html-editor-item
+          widget="dxButton"
+          [options]="previewButtonOptions"
+        >
+        </dxi-html-editor-item>
+      </dxo-html-editor-toolbar>
+    </dx-html-editor>
+
+    <dx-popup
+      [(visible)]="popupVisible"
+      title="Markup"
+      width="80%"
+      height="80%"
+      [hideOnOutsideClick]="true"
+      [showCloseButton]="true"
+    >
+      <div *dxTemplate="let data of 'content'" class="preview-container">
+        <iframe class="preview-iframe" [src]="previewContent"> </iframe>
+      </div>
+    </dx-popup>
+  </div>
 </div>

@@ -1,35 +1,47 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed, discardPeriodicTasks, fakeAsync, flush } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { DxHtmlEditorModule, DxPopupModule } from 'devextreme-angular';
+import { Service } from './app.service';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-      ],
-      declarations: [
-        AppComponent,
-      ],
+      declarations: [AppComponent],
+      imports: [DxHtmlEditorModule, DxPopupModule], 
+      providers: [Service] 
     }).compileComponents();
-  });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it('should have as title \'angular-test\'', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-test');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-test app is running!');
   });
+
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
+  }); 
+
+  it('should render the dx-html-editor', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.dx-htmleditor')).toBeTruthy();
+  });
+
+ it('should open the popup and render an iframe when preview button is clicked', fakeAsync(() => {
+  component.showMarkupPreview();
+
+  fixture.detectChanges();
+
+  flush();
+  discardPeriodicTasks();
+
+  fixture.detectChanges();
+
+  expect(component.popupVisible).toBe(true);
+
+  expect(document.querySelector('.dx-popup-content')).toBeTruthy();
+  const iframe = document.querySelector('.dx-popup-content iframe');
+  expect(iframe).toBeTruthy();
+}));
 });
