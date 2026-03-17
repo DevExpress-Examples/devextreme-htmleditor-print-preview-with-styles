@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DxHtmlEditorComponent } from 'devextreme-angular';
 import { HtmlPreviewHelper } from './helpers/html-preview-helper';

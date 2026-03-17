@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, discardPeriodicTasks, fakeAsync, flush, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, discardPeriodicTasks, fakeAsync, flush } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { DxHtmlEditorModule, DxPopupModule } from 'devextreme-angular';
 import { Service } from './app.service';
