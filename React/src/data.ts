@@ -1,4 +1,4 @@
-export const markup: string = `
+const markup: string = `
   <h2>
     <img src="https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/widgets/HtmlEditor.svg" alt="HtmlEditor" />
     Formatted Text Editor (HTML Editor)
@@ -49,3 +49,5 @@ export const markup: string = `
     </tbody>
   </table>
 `;
+
+export default markup;

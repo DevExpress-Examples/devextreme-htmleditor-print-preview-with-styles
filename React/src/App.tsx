@@ -1,17 +1,17 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef } from 'react';
 import HtmlEditor, {
   Toolbar,
   Item,
   type HtmlEditorRef,
-} from "devextreme-react/html-editor";
-import { Popup } from "devextreme-react/popup";
-import { Button } from "devextreme-react/button";
+} from 'devextreme-react/html-editor';
+import { Popup } from 'devextreme-react/popup';
+import { Button } from 'devextreme-react/button';
 
-import PreviewIframe from "./htmleditor-preview/PreviewIframe";
-import { markup as initialMarkup } from "./data";
+import PreviewIframe from './htmleditor-preview/PreviewIframe.tsx';
+import initialMarkup from './data';
 
-import "devextreme/dist/css/dx.material.blue.light.compact.css";
-import "./index.css";
+import 'devextreme/dist/css/dx.material.blue.light.compact.css';
+import './index.css';
 
 const headerValues: Array<number | boolean> = [false, 1, 2, 3, 4, 5];
 
@@ -88,8 +88,8 @@ export default function App() {
       >
           <PreviewIframe
             rawHtml={
-              editorRef.current?.instance().getQuillInstance().root.innerHTML ||
-              ""
+              editorRef.current?.instance().getQuillInstance().root.innerHTML
+              || ''
             }
             editorRef={editorRef}
           />

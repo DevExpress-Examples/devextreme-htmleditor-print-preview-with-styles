@@ -1,8 +1,8 @@
-import { type RefObject } from "react";
-import { useHtmlPreview } from "./hooks/useHtmlEditorPreview";
-import type { HtmlEditorRef } from "devextreme-react/cjs/html-editor";
+import { type RefObject } from 'react';
+import type { HtmlEditorRef } from 'devextreme-react/cjs/html-editor';
+import useHtmlPreview from './hooks/useHtmlEditorPreview';
 
-import "./previewIframe.css";
+import './previewIframe.css';
 
 interface PreviewIframeProps {
   rawHtml: string;
@@ -10,9 +10,9 @@ interface PreviewIframeProps {
 }
 
 const iframeStyles: React.CSSProperties = {
-  width: "100%",
-  height: "100%",
-  border: "none",
+  width: '100%',
+  height: '100%',
+  border: 'none',
 };
 
 export default function PreviewIframe({
