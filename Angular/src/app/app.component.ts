@@ -8,7 +8,8 @@ import { Service } from './app.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [Service]
+  providers: [Service],
+  standalone: false
 })
 export class AppComponent implements OnDestroy {
   @ViewChild(DxHtmlEditorComponent, { static: false }) editor!: DxHtmlEditorComponent;
