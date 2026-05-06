@@ -6,7 +6,7 @@
 <!-- default badges end -->
 # DevExtreme HTML Editor - Preserve Styles in Print Preview
 
-This example implements a preview that displays HTML Editor content with DevExtreme styles in a popup.
+This example implements a preview popup that displays HTML Editor content with DevExtreme styles in an iframe element. You can also use this approach to display HTML Editor content on a standalone (external) page.
 
 ![HTML Editor Print Preview](images/image-template.png)
 
