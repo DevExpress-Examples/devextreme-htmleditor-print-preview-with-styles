@@ -6,19 +6,19 @@
 <!-- default badges end -->
 # DevExtreme HTML Editor - Preserve Styles in Print Preview
 
-You can display HTML Editor content outside of the component if you apply DevExtreme styles to the markup. This example displays content in an iframe element in a DevExtreme Popup. You can also use this approach to display HTML Editor markup on a standalone (external) page. This implementation allows you to export or print HTML Editor content as your needs dictate.
+You can display formatted HTML Editor content in an external component/separate web page as a preview before exporting or printing the document. This example displays formatted content in a DevExtreme Popup (using the [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe) element). 
 
 ![HTML Editor Print Preview](images/image-template.png)
 
 ## Implementation Details
 
-1. Get HTML Editor content from the component Quill instance:
+1. Get HTML Editor content using the component's Quill instance:
 
 ```js
 const content = editorInstance.getQuillInstance().root.innerHTML;
 ```
 
-2. Generate a standalone HTML document (with `<html>`, `<head>`, and `<body>` tags) and embed component content in the document. Reference active DevExtreme stylesheets (such as `dx.fluent.blue.light.css`) in the `<head>` section.
+2. Generate a standalone HTML document (with `<html>`, `<head>`, and `<body>` tags) and insert component content into the document. In the `<head>` section, reference active DevExtreme stylesheets (for example, `dx.fluent.blue.light.css`).
 
 ```js
 const document = `
@@ -33,7 +33,7 @@ const document = `
 </html>`
 ```
 
-3. Embed an iframe into a DevExtreme Popup to display the generated document on a page.
+3. Add an iframe element to a DevExtreme Popup to display the formatted document.
 
 ## Files to Review
 
