@@ -6,7 +6,7 @@
 <!-- default badges end -->
 # DevExtreme HTML Editor - Preserve Styles in Print Preview
 
-This example implements a preview popup that displays HTML Editor content with DevExtreme styles in an iframe element. You can also use this approach to display HTML Editor content on a standalone (external) page.
+You can display HTML Editor content outside of the component if you apply DevExtreme styles to the markup. This example displays content in an iframe element in a DevExtreme Popup. You can also use this approach to display HTML Editor markup on a standalone (external) page. This implementation allows you to export or print HTML Editor content as your needs dictate.
 
 ![HTML Editor Print Preview](images/image-template.png)
 
