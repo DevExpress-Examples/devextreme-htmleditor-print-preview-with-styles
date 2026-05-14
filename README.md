@@ -6,17 +6,34 @@
 <!-- default badges end -->
 # DevExtreme HTML Editor - Preserve Styles in Print Preview
 
-This example demonstrates how to show DevExtreme HTML Editor content in a preview popup and preserve the editor's styles in the generated preview document.
-
-The preview implementation:
-- Reads the current markup from the embedded Quill instance
-- Recreates the HTML Editor content structure in a standalone document
-- Copies DevExtreme theme styles to keep the preview appearance consistent with the editor
-- Uses an iframe-based preview that can be used for print scenarios
-
-The repository includes this scenario for Angular, React, Vue, jQuery, and ASP.NET Core.
+You can display formatted HTML Editor content in an external component/separate web page as a preview before exporting or printing the document. This example displays formatted content using the DevExtreme Popup component (in an [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe) element).
 
 ![HTML Editor Print Preview](images/image-template.png)
+
+## Implementation Details
+
+1. Get HTML Editor content using the component's Quill instance:
+
+```js
+const content = editorInstance.getQuillInstance().root.innerHTML;
+```
+
+2. Generate a standalone HTML document (with `<html>`, `<head>`, and `<body>` tags) and insert component content into the document. In the `<head>` section, reference active DevExtreme stylesheets (for example, `dx.fluent.blue.light.css`).
+
+```js
+const document = `
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../node_modules/devextreme-dist/css/dx.fluent.blue.light.css">
+	</head>
+	<body>
+        <div>${content}</div>
+	</body>
+</html>`
+```
+
+3. Add an iframe element to a DevExtreme Popup to display the formatted document.
 
 ## Files to Review
 
