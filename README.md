@@ -6,7 +6,7 @@
 <!-- default badges end -->
 # DevExtreme HTML Editor - Preserve Styles in Print Preview
 
-You can display formatted HTML Editor content in an external component/separate web page as a preview before exporting or printing the document. This example displays formatted content in a DevExtreme Popup (using the [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe) element). 
+You can display formatted HTML Editor content in an external component/separate web page as a preview before exporting or printing the document. This example displays formatted content using the DevExtreme Popup component (in an [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe) element).
 
 ![HTML Editor Print Preview](images/image-template.png)
 
