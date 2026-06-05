@@ -8,10 +8,5 @@
     "devextreme-dist": "^25.2.3",
     "devextreme-quill": "^1.7.9",
     "jquery": "3.7.1"
-  },
-  "devDependencies": {
-    "gulp": "4.0.2",
-    "gulp-concat": "2.6.1",
-    "rimraf": "5.0.7"
   }
 }
