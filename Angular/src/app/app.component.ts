@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DxHtmlEditorComponent } from 'devextreme-angular';
 import { HtmlPreviewHelper } from './helpers/html-preview-helper';
@@ -9,6 +9,7 @@ import { Service } from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [Service],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class AppComponent implements OnDestroy {
